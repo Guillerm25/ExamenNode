@@ -1,6 +1,14 @@
 <%- include('template/head', {tituloWeb: 'Inicio EJS'}); %>
 
 <div class="container">
+
+  <a
+       class="btn btn-dark btn-block my-4"
+       href="/clientes/crear"
+  >
+        Agregar nuevo cliente
+</a>
+
     <table class="table table-dark">
         <thead>
           <tr>
@@ -18,7 +26,16 @@
                         <th scope="row"><%= cliente.id  %> </th>
                         <td><%= cliente.nombre  %></td>
                         <td><%= cliente.descripcion  %></td>
-                        <td>@mdo</td>
+                        <td>
+                          
+                          <a 
+                          class=" btn btn-warning"
+                          href="clientes/<%= cliente.id  %>">
+
+                          Editar
+                          </a>
+
+                        </td>
                       </tr>  
 
                      <% }) %>

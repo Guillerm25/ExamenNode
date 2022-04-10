@@ -1,0 +1,104 @@
+<%- include('template/head', {tituloWeb: 'detalle de cliente'}); %>
+
+<div class="container">
+
+    <h1>Editar cliente</h1>
+    
+    <% if (error) { %>
+        <%= mensaje %> 
+        <a 
+            href="/clientes"
+            class="btn btn-dark btn-block my-2"
+        >
+            Volver
+        </a>
+    <% } %>
+
+    <% if (!error) { %>
+
+        <form id="editar" data-id="<%= cliente.id %>">
+            <input 
+                type="text"
+                value="<%= cliente.nombre %>"
+                class="form-control my-2"
+                name="nombre"
+                id="nombreInput"
+            >
+            <input 
+                type="text"
+                value="<%= cliente.descripcion %>"
+                class="form-control my-2"
+                name="descripcion"
+                id="descripcionInput"
+            >
+            <button
+                class="btn btn-warning btn-sm"
+                type="submit"
+            >
+                Editar
+            </button>
+        </form>
+        <hr>
+        <button
+            class="btn btn-danger btn-sm"
+            data-id="<%= cliente.id %>"
+        >
+            Eliminar
+        </button>
+    <% } %>
+   
+
+<%- include('template/footer'); %>
+
+<script>
+    
+    const btnEliminar = document.querySelector('.btn-danger')
+      btnEliminar.addEventListener('click', async() => {
+        console.log(btnEliminar.dataset.id)  
+        try {
+            const data = await fetch(`/clientes/${btnEliminar.dataset.id}`, {
+              method: 'delete'
+            })
+            const res = await data.json()
+            console.log(res)
+            if(res.estado){
+                window.location.href = '/clientes'
+            }else{
+                console.log(res)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+      })
+
+      //Editar documento 
+
+      const formEditar = document.querySelector('#editar');
+
+      formEditar.addEventListener('submit', async(e) => {
+          e.preventDefault()
+          const nombre = formEditar.elements['nombre'].value
+
+          const descripcion = document.querySelector('#descripcionInput').value
+          
+          const id = formEditar.dataset.id 
+      
+          const data = await fetch(`/clientes/${id}`, {
+              method: 'PUT',
+              headers: {
+              'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({nombre, descripcion})
+          })
+      
+          const res = await data.json()
+      
+          if(res.estado){
+              window.location.href = '/clientes'
+          }else{
+              console.log(res)
+          }
+      
+      })
+    
+    </script>
