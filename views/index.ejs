@@ -1,5 +1,23 @@
-<%- include('template/head', {tituloWeb: 'Inicio EJS'}); %>
+<%- include('template/head', {tituloWeb: 'Appviajes'}); %>
 
+<div class="container text-center">
+    <img class="w-50" src="https://publicidadrayo.com/tportal/wp-content/uploads/2020/11/cropped-logo-travelportal-agencia.png" alt="">
+    <div class="row">
+        <div class="col-6 col-md-3 p-2 ">
+            <div style="width: 200px; height: 200px;" class="bg-success rounded rounded-circle p-2 mb-2"><h2 class="mt-5"><a href="/clientes"> Listado Clientes</a></h2></div>        
+        </div>
+        <div class="col-6 col-md-3 p-2 ">
+            <div style="width: 200px; height: 200px;" class="bg-warning rounded rounded-circle p-2 mb-2"><h2 class="mt-5"><a href="/clientes/crear"> Crear Cliente</a></h2></div>        
+        </div>
+        <div class="col-6 col-md-3 p-2 ">
+            <div style="width: 200px; height: 200px;" class="bg-info rounded rounded-circle p-2 mb-2"><h2 class="mt-5"><a href="/clientes/viajes">Listado Viajes</a></h2></div>        
+        </div>
+        <div class="col-6 col-md-3 p-2 ">
+            <div style="width: 200px; height: 200px;" class="bg-danger rounded rounded-circle p-2 mb-2"><h2 class="mt-5"><a class="" href="/clientes/seguros">Listado Seguros</a></h2></div>        
+        </div>
+       
+    </div>
 
-    <h1 class="text-primary">Hola a EJS <%= titulo %></h1>
-    <%- include('template/footer'); %>
+</div>
+
+<%- include('template/footer'); %>

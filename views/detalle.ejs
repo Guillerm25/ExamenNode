@@ -17,30 +17,73 @@
     <% if (!error) { %>
 
         <form id="editar" data-id="<%= cliente.id %>">
+            <h6>Nombre</h6>
             <input 
                 type="text"
                 value="<%= cliente.nombre %>"
                 class="form-control my-2"
                 name="nombre"
                 id="nombreInput"
+                required
             >
+            <h6>Apellidos</h6>
             <input 
                 type="text"
-                value="<%= cliente.descripcion %>"
+                value="<%= cliente.apellidos %>"
                 class="form-control my-2"
-                name="descripcion"
-                id="descripcionInput"
+                name="apellidos"
+                id="apellidosInput"
+                required
             >
+            <h6>Email</h6>
+            <input 
+                type="text"
+                value="<%= cliente.email %>"
+                class="form-control my-2"
+                name="email"
+                id="emailInput"
+                required
+            >
+            <h6>DNI</h6>
+            <input 
+                type="text"
+                value="<%= cliente.dni %>"
+                class="form-control my-2"
+                name="dni"
+                id="dniInput"
+                required
+            >
+        
+            <select class="form-select my-2" name="viaje" id="viajeInput"  value="<%= cliente.viaje %>" required>
+                <option value="0" selected="">Selecciona tu viaje...</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Cordoba">Córdoba</option>
+                <option value="Alicante">Alicante</option>
+            </select>
+              
+            <select class="form-select my-2" name="seguro" id="seguroInput"  value="<%= cliente.seguro %>" required>
+                <option value="0" selected="">Selecciona si contrata seguro...</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+               
+            </select>
+
+            <select class="form-select my-2" name="pagado" id="pagadoInput"  value="<%= cliente.pagado %>" required>
+                <option value="0" selected="">Selecciona si está pagado...</option>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+            </select>
+            
             <button
-                class="btn btn-warning btn-sm"
+                class="btn btn-warning"
                 type="submit"
             >
                 Editar
             </button>
         </form>
-        <hr>
         <button
-            class="btn btn-danger btn-sm"
+            class="btn btn-danger mt-2"
             data-id="<%= cliente.id %>"
         >
             Eliminar
@@ -78,8 +121,13 @@
       formEditar.addEventListener('submit', async(e) => {
           e.preventDefault()
           const nombre = formEditar.elements['nombre'].value
+          const apellidos = document.querySelector('#apellidosInput').value
+          const email = document.querySelector('#emailInput').value
+          const dni = document.querySelector('#dniInput').value
+          const viaje = document.querySelector('#viajeInput').value
+          const seguro = document.querySelector('#seguroInput').value
+          const pagado = document.querySelector('#pagadoInput').value
 
-          const descripcion = document.querySelector('#descripcionInput').value
           
           const id = formEditar.dataset.id 
       
@@ -88,7 +136,7 @@
               headers: {
               'Content-Type': 'application/json'
               },
-              body: JSON.stringify({nombre, descripcion})
+              body: JSON.stringify({nombre, apellidos, email, dni, viaje, seguro, pagado})
           })
       
           const res = await data.json()

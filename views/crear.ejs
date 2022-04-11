@@ -11,18 +11,56 @@
             placeholder="Ingrese Nombre"
             class="form-control my-2"
             name="nombre"
+            required
         >
     
         <input 
             type="text"
-            placeholder="Ingrese Descripción"
+            placeholder="Ingrese Apellidos"
             class="form-control my-2"
-            name="descripcion"
+            name="apellidos"
+            required
         >
-    
+
+        <input 
+            type="text"
+            placeholder="Ingrese email"
+            class="form-control my-2"
+            name="email"
+            required
+        >
+
+        <input 
+            type="text"
+            placeholder="Ingrese DNI"
+            class="form-control my-2"
+            name="dni"
+            required
+        >
+
+        <select class="form-select my-2" name="viaje" required>
+            <option value="0" selected="">Selecciona tu viaje...</option>
+            <option value="barcelona">Barcelona</option>
+            <option value="madrid">Madrid</option>
+            <option value="cordoba">Córdoba</option>
+            <option value="alicante">Alicante</option>
+          </select>
+
+          <select class="form-select my-2" name="seguro" required>
+            <option value="0" selected="">Selecciona Seguro...</option>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+        
+          </select>
+
+          <select class="form-select my-2" name="pagado" required>
+            <option value="0" selected="">Selecciona pagado...</option>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+           </select> 
         <button
             type="submit"
-            class="btn btn-dark btn-block"
+            class="btn btn-success btn-block"
         >
             Agregar
         </button>

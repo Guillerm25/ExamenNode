@@ -4,7 +4,13 @@ const Schema = mongoose.Schema;
 const clienteSchema = new Schema({
 
     nombre: String,
-    descripcion: String
+    apellidos: String,
+    email: String,
+    dni: String,
+    viaje: String,
+    seguro: String,
+    pagado: String,
+
 })
 
 // Modelo

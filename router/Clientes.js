@@ -32,8 +32,18 @@ router.get('/', async (req, res) => {
   
 })
 
+//Rutas para la navegación
+
 router.get('/crear', (req, res) => {
     res.render('crear')
+})
+
+router.get('/viajes', (req, res) => {
+    res.render('viajes')
+})
+
+router.get('/seguros', (req, res) => {
+    res.render('seguros')
 })
 
 
@@ -47,6 +57,8 @@ router.post('/', async (req, res) => {
         console.log('error', error)
     }
 })
+
+
 
 
 
